@@ -1,8 +1,10 @@
-const express = require('express');
-const connectDB = require('./server/app'); // Import the connectDB function
-const cors = require('cors'); // Import CORS
-const authRoutes = require('./routes/auth'); // Import auth routes
-const loginRoute = require('./POST/api/login'); // Import login route
+import express from 'express';
+import connectDB from './server/app.js';
+import cors from 'cors';
+import authRoutes from './routes/auth.js';
+import loginRoute from './POST/api/login.js';
+import restaurantRoutes from './api/restaurants.js';
+
 
 const app = express();
 
@@ -16,6 +18,6 @@ connectDB();
 // Routes
 app.use('/api/auth', authRoutes); // Use signup routes
 app.use('/api', loginRoute); // Use login routes
-
+app.use('/api/restaurants', restaurantRoutes);
 // Start the server
 app.listen(5000, () => console.log('Server running on port 5000'));

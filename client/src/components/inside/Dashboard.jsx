@@ -1,9 +1,12 @@
 import React from 'react'
+import Head from './Head'
+import Products from './Products'
 
 function Base() {
   return (
     <div>
-      <h1>Login Successfull!</h1>
+      <Head/>
+      <Products/>
     </div>
   )
 }
