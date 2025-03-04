@@ -42,7 +42,7 @@ function Login() {
               required/>
               <input type="password" placeholder='Enter your Password' className='p-2 rounded' onChange={(e) => setPassword(e.target.value)}
               required/>
-              <Button variant='primary' children="Submit"/>
+              <Button variant='primary'>Submit</Button>
 
             </div>
             <p className='text-black text-center p-1 m-2'>Don't have an account?

@@ -1,11 +1,17 @@
 import HeadBody from './HeadBody'
-import Footer from './Footer'
+import AnimatedComponent from './AnimatedComponent';
+import { lazy,Suspense } from 'react';
 
 function Home() {
+  const Footer = lazy(()=>import("./Footer"));
   return (
     <div>
       <HeadBody/>
-      <Footer/>
+      <Suspense fallback={<h1>Loading...</h1>}>
+      <AnimatedComponent>
+        <Footer/>
+      </AnimatedComponent>
+      </Suspense>
     </div>
   )
 }
