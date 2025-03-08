@@ -5,6 +5,7 @@ const userSchema = new mongoose.Schema({
     name: {
         type: String,
         required: true,
+        unique: true,
     },
     email: {
         type: String,
@@ -14,13 +15,19 @@ const userSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: true,
+        required: true
     },
     createdAt: {
         type: Date,
         default: Date.now,
     },
+    dateOfBirth:{
+        type : Date,
+        required: false,
+
+    }
 });
+
 
 // Create the User model
 const User = mongoose.model('Users', userSchema, 'Users');

@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 
+
 const restaurantSchema = new mongoose.Schema({
     address: {
         country: String,
@@ -23,5 +24,7 @@ const restaurantSchema = new mongoose.Schema({
     thumbnail: String
 });
 
-const Restaurant = mongoose.model("Restaurant", restaurantSchema,"restaurants");
+
+const Restaurant = mongoose.model("Restaurant", restaurantSchema);
+
 module.exports = Restaurant;

@@ -17,8 +17,10 @@ function Header() {
     // Close dropdown when clicking outside
     useEffect(() => {
         function handleClickOutside(event) {
-            console.log(dropdownRef.current.contains(event.target));
-            console.log(dropdownRef.current.event);
+            // console.log(event);
+            // console.log(dropdownRef);
+            // console.log(dropdownRef.current.contains(event.target));
+            // console.log(dropdownRef.current);
             if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
                 setIsOpen(false);
             }
@@ -32,7 +34,7 @@ function Header() {
         <div className="flex justify-between items-center p-4 h-20">
             <div className="logo-div flex items-center">
                 <img src="/justlogo2.png" alt="logo" className="w-[90px] h-[80px] cursor-pointer" onClick={()=>navigate("/")}/>
-                <h3 className="text-[30px] text-orange-500 font-bold cursor-pointer" onClick={()=>navigate("/")}>biteXpress</h3>
+                <h3 className="text-[40px] text-orange-500 font-bold cursor-pointer" onClick={()=>navigate("/")}>biteXpress</h3>
             </div>
             <div className="relative flex gap-4 items-center">
                 <div className="relative" ref={dropdownRef}>

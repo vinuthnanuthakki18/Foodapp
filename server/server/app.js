@@ -1,12 +1,15 @@
-// const mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
 // mongoose.connect('mongodb+srv://<vinuthnanuthakki18>:<Vinuthnamongo1822>@cluster0.mongodb.net/<Foodapp>?retryWrites=true&w=majority')
 //     .then(() => console.log('Connected to MongoDB'))
 //     .catch((err) => console.error('Could not connect to MongoDB', err));
 
 // module.exports = connectDB;
-
-const mongoose = require('mongoose');
+// const express = require("express");
+// // const Restaurant = require("./models/restaurants");
+// // const router = express.Router();
+// const app =express();
+// app.use(express.json());
 
 const connectDB = async () => {
     try {
@@ -21,5 +24,6 @@ const connectDB = async () => {
         process.exit(1); // Exit process with failure
     }
 };
+
 
 module.exports = connectDB;

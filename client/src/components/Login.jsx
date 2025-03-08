@@ -4,12 +4,16 @@ import Button from './Button'
 import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
 import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { login } from '../redux/authSlice';
 
 function Login() {
   const navigate = useNavigate();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const user =useSelector((state)=> state.auth.user);
+  const dispatch = useDispatch();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -18,16 +22,20 @@ function Login() {
         const response = await axios.post('http://localhost:5000/api/login', { email, password });
 
         const token = response.data.token;
-
+        
         // Store token in localStorage for future API calls
+        console.log(response.data);
         localStorage.setItem('token', token);
-
+        localStorage.setItem("user", JSON.stringify(response.data.user));
+        dispatch(login(response.data.user));
         // Redirect to dashboard or home page
         navigate('/dashboard');
     } catch (err) {
         setError(err.response?.data?.message || 'Login failed');
+        alert("Invalid Credentials");
     }
 };
+// console.log("user",user);
   return (
     <div>
       <Header/>
@@ -52,6 +60,7 @@ function Login() {
 
         </div>
         </form>
+
       <Footer/>
   </div>
   )

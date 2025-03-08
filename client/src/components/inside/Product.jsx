@@ -8,11 +8,12 @@ function Product({restaurants}) {
     notation: "compact",
     compactDisplay: "short",
   });
+  
   // console.log(restaurents);
   return (
     <div  className='text-black bg-gray-100 w-[300px] h-[300px] border-red-700 flex flex-col m-2 p-2 rounded-md shadow-2xl'>
       <div className="img w-[100%] h-[150px] object-fill flex justify-center">
-            <a href={restaurants.link} target="_blank"><img src={restaurants?.thumbnail || dImage} alt="restaurant-image" className=" w-[300px] h-[150px] rounded-md" /></a>
+            <a href={restaurants.link} target="_blank"><img src={restaurants?.thumbnail || dImage}  loading="lazy" alt="restaurant-image" className=" w-[300px] h-[150px] rounded-md" /></a>
       </div>
       <div className="bottom flex-row">
         <div className="title ">

@@ -37,4 +37,9 @@ router.post('/signup', async (req, res) => {
     }
 });
 
+// router.post('/signup/update', async (req, res) => {
+//     const dob = req.body;
+//     const 
+// });
+
 module.exports = router;

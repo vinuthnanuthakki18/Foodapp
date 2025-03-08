@@ -1,5 +1,6 @@
-const response = {
-    data: [
+
+
+const response =[
       {
         "address": {
           "country": "United States",
@@ -13399,13 +13400,9 @@ const response = {
           thumbnail:
             "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/13/28/48/c8/lovely-classy-interiors.jpg",
         },
-    ],
-    "pageInfo": {
-      "endCursor": "60763|30",
-      "hasNextPage": true
-    }
-  };
+    ];
   
-  const newresponse = Array.from(new Map(response.data.map(u=>[u.id, u])).values());
-  console.log(newresponse[0]);
-  module.exports = newresponse;
+  const newresponse =Array.from(new Map(response.map(u=>[u.id, u])).values());
+  console.log("hi",Array.isArray(newresponse));
+
+module.exports = newresponse;

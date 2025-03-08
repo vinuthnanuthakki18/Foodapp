@@ -6,8 +6,8 @@ function TopHome() {
   return (
     <div className="serachloc w-[500px] h-[300px] rounded  text-orange-500 absolute bottom-[70px] left-1/2 transform -translate-x-1/2">
     <div className="search2 flex flex-col items-center p-1">
-        <div className="searchheaduptext font-extrabold text-[40px] text-center">
-            Restaurants, takeaways,<br/> supermarkets and <br/>shops. Delivered.
+        <div className="searchheaduptext text-center">
+           <span className=' bg-white font-extrabold text-[40px]'> Restaurants, takeaways,<br/> supermarkets and <br/>shops. Delivered.</span>
         </div>
         <div className="search-down bg-white w-[100%] sm:w-[80%] md:w-[100%] rounded mt-6 flex flex-col items-center">
             <p className='p-2 text-center'>Enter a postcode to see what we deliver:</p>
