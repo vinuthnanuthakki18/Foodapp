@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { act } from "react";
 
 const user = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null;
 
@@ -10,6 +11,8 @@ const initialState = {
     name : user.name,
     password : user.password,
     createdAt : user.createdAt,
+    dateOfBirth : user.dateOfBirth,
+    gender : user.gender,
   } : null,
 };
 console.log("user1",user);
@@ -28,8 +31,17 @@ const authSlice = createSlice({
       localStorage.removeItem("user"); 
       localStorage.removeItem("token");// Clear session
     },
+    update: (state, action) => {
+      state.user = {
+        ...state.user,
+        ...action.payload,
+        dateOfBirth : action.payload.dateOfBirth,
+        gender : action.payload.gender,
+      }
+      localStorage.setItem("user", JSON.stringify(state.user));
+    },
   },
 });
 
-export const { login, logout } = authSlice.actions;
+export const { login, logout, update } = authSlice.actions;
 export default authSlice.reducer;

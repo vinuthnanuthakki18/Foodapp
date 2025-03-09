@@ -25,6 +25,11 @@ const userSchema = new mongoose.Schema({
         type : Date,
         required: false,
 
+    },
+    gender:{
+        type : String,
+        required: false,
+
     }
 });
 

@@ -37,7 +37,7 @@ function Products() {
 // console.log("data",dataRest);
 
   return (
-
+<>
     <div className='border-box m-2 h-full w-[98%] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2'>
       {isLoading ? <div className="flex justify-center items-center w-[1230px] h-[200px]">
     <BounceLoader
@@ -51,10 +51,10 @@ function Products() {
       <Product restaurants={sets} key={sets.id}/>
     )) 
   }
-  {isLoading  ||
+  </div>
+ {isLoading  ||
   <Pagenation totalPages={totalPages} currentPage={currentPage} onPrevClick={onPrevClick} onNextClick={onNextClick}/>}
-    </div>
-
+   </>
   )
 }
 

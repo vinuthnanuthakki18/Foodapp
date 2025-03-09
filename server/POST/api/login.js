@@ -36,24 +36,39 @@ router.post('/login', async (req, res) => {
 });
 
 router.post('/update', async (req, res) => {
+    const user = req.body._id;
+    const updatepass = req.body?.password || null;
+    const dob = req.body.dateOfBirth;
+    const gender = req.body.gender;
 
-    const {user, updatepass} = req.body;
-    console.log(req.body);
-    if (!updatepass) {
-        console.log('empty password');
-        return res.status(400).json({ message: 'Passwords cant be empty' });
+    if (!updatepass && !dob && !gender) {
+        console.log('Empty Details');
+        return res.status(400).json({ message: 'Details can’t be empty' });
     }
+
     try {
         // Check if user exists
-        const hashedPassword = await bcrypt.hash(updatepass, 10);
+        const existingUser = await User.findById(user);
+        if (!existingUser) {
+            return res.status(404).json({ message: "User not found" });
+        }
 
-        await User.findByIdAndUpdate(user, {password : hashedPassword});
+        let updated = { ...req.body };  // Spread request body
 
-        res.status(200).json({message : " Password Successfully changed!"});
+        if (updatepass) {
+        updated.password = await bcrypt.hash(updatepass, 10);
+            console.log("Hashed Password:", updated.password); // Debugging
+        }
 
-    }catch (err) {
+        const updatedUser = await User.findByIdAndUpdate(user, updated, { new: true });
+
+        console.log("Updated User:", updatedUser);
+        res.status(200).json({ message: "Details Updated successfully!", user: updatedUser });
+
+    } catch (err) {
         console.error('Error:', err.message);
         res.status(500).json({ message: 'Server error', error: err.message });
     }
 });
+
 module.exports = router;
