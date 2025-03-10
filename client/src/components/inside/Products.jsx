@@ -4,22 +4,25 @@ import { useEffect, useRef, useState } from 'react';
 import axios from "axios";
 import {BounceLoader} from 'react-spinners';
 import Pagenation from './Pagenation';
+import { useSelector, useDispatch } from 'react-redux';
+import {updateData, updateisLoading} from '../../redux/restSlice';
 
 function Products() {
-  const [dataRest,setdataRest] = useState([]);
+  const dataRest = useSelector((state)=>state.rest.restData)
   const [currentPage, setCurrentPage] = useState(1);
   const [totalPages, settotalPages] = useState(1);
   const itemsPerPage = 12;
   const [isLoading, setIsLoading] = useState(true);
-
+  const dispatch = useDispatch();
 
   useEffect(() => {
     const fetchData = async ()=>{
       setIsLoading(true);
        await axios.get(`http://localhost:5000/api/restaurants?page=${currentPage}&items=${itemsPerPage}`)
         .then((res) => {
-          setTimeout(() => {setdataRest(res.data.data); settotalPages(Math.ceil(res.total/itemsPerPage));
+          setTimeout(() => {dispatch(updateData(res.data.data)); settotalPages(Math.ceil(res.total/itemsPerPage));
             setIsLoading(false);}, 1000); // ✅ Correct
+            console.log("hey",dataRest);
         })
         .catch((err) => console.error("Couldn't fetch the data: ", err));
   }
@@ -51,6 +54,7 @@ function Products() {
       <Product restaurants={sets} key={sets.id}/>
     )) 
   }
+  {/* {(!isLoading && dataRest) && <h1>No results found</h1>} */}
   </div>
  {isLoading  ||
   <Pagenation totalPages={totalPages} currentPage={currentPage} onPrevClick={onPrevClick} onNextClick={onNextClick}/>}

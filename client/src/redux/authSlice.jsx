@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { act } from "react";
 
 const user = localStorage.getItem("user") ? JSON.parse(localStorage.getItem("user")) : null;
 

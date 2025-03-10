@@ -6,6 +6,7 @@ import {lazy, Suspense} from 'react';
 import {BounceLoader} from 'react-spinners';
 function Base() {
   const Products = lazy(()=>import('./Products'));
+
   return (
     <div>
       <Head/>
