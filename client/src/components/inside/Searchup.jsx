@@ -5,6 +5,7 @@ import {updateData, updateisSearch} from '../../redux/restSlice';
 import { useSelector,useDispatch } from 'react-redux';
 import SearchIcon from '@mui/icons-material/Search';
 import API_BASE_URL from "../../../config";
+
 function Searchup() {
   const [query, setQuery] = useState("");
   const dispatch = useDispatch();

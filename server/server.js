@@ -10,7 +10,7 @@ const app = express();
 const router = express.Router();
 // Middleware
 app.use(express.json());
-app.use(cors({ origin: 'http://localhost:5173' })); // Replace with your frontend URL
+app.use(cors({ origin: 'https://foodapp-frontend-envwwzw0u-nuthakki-vinuthnas-projects.vercel.app/' })); // Replace with your frontend URL
 
 // Connect to MongoDB
 connectDB();
