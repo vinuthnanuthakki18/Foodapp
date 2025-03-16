@@ -10,7 +10,22 @@ const app = express();
 const router = express.Router();
 // Middleware
 app.use(express.json());
-app.use(cors({ origin: 'https://bitexpress-delta.vercel.app/' })); // Replace with your frontend URL
+const allowedOrigins = [
+    "https://bitexpress-delta.vercel.app", // Your new frontend URL
+    "https://foodapp-frontend-envwwzw0u-nuthakki-vinuthnas-projects.vercel.app" // Old frontend (optional)
+  ];
+  
+  app.use(cors({
+    origin: function (origin, callback) {
+      if (!origin || allowedOrigins.includes(origin)) {
+        callback(null, true);
+      } else {
+        callback(new Error("Not allowed by CORS"));
+      }
+    },
+    credentials: true // If using cookies or authentication
+  }));
+  
 
 // Connect to MongoDB
 connectDB();
