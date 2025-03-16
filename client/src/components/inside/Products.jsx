@@ -6,6 +6,7 @@ import {BounceLoader} from 'react-spinners';
 import Pagenation from './Pagenation';
 import { useSelector, useDispatch } from 'react-redux';
 import {updateData, updateisLoading} from '../../redux/restSlice';
+import API_BASE_URL from '../../../config';
 
 function Products() {
   const dataRest = useSelector((state)=>state.rest.restData)
@@ -18,7 +19,7 @@ function Products() {
   useEffect(() => {
     const fetchData = async ()=>{
       setIsLoading(true);
-       await axios.get(`http://localhost:5000/api/restaurants?page=${currentPage}&items=${itemsPerPage}`)
+       await axios.get(`${API_BASE_URL}/api/restaurants?page=${currentPage}&items=${itemsPerPage}`)
         .then((res) => {
           setTimeout(() => {dispatch(updateData(res.data.data)); settotalPages(Math.ceil(res.total/itemsPerPage));
             setIsLoading(false);}, 1000); // ✅ Correct

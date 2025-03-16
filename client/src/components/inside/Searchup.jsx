@@ -4,7 +4,7 @@ import axios from "axios";
 import {updateData, updateisSearch} from '../../redux/restSlice';
 import { useSelector,useDispatch } from 'react-redux';
 import SearchIcon from '@mui/icons-material/Search';
-
+import API_BASE_URL from "../../../config";
 function Searchup() {
   const [query, setQuery] = useState("");
   const dispatch = useDispatch();
@@ -13,7 +13,7 @@ function Searchup() {
   const fetchResults = debounce( async(searchquery)=>{
     if(!searchquery)  return;
     try{
-      const response = await axios.post(`http://localhost:5000/api/restaurants/search?query=${searchquery}`);
+      const response = await axios.post(`${API_BASE_URL}/api/restaurants/search?query=${searchquery}`);
       console.log(response);
       dispatch(updateData(response.data.data));
       // console.log("data",data);

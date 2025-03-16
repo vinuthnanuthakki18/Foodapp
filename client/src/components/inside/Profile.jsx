@@ -5,6 +5,7 @@ import { BounceLoader } from "react-spinners";
 import axios from "axios";
 import { update } from "../../redux/authSlice";
 import { useDispatch } from "react-redux";
+import API_BASE_URL from "../../../config";
 
 function Profile() {
   const userProfile = useSelector((state) => state.auth.user);
@@ -48,7 +49,7 @@ function Profile() {
     }
   
     try {
-      const response = await axios.post("http://localhost:5000/api/update", updateData);
+      const response = await axios.post(`${API_BASE_URL}/api/update`, updateData);
       console.log(response);
       if(response.status == 200)  setres(true);
       dispatch(update(response.data.user));

@@ -6,6 +6,7 @@ import axios from 'axios';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { login } from '../redux/authSlice';
+import API_BASE_URL from '../../config';
 
 function Login() {
   const navigate = useNavigate();
@@ -19,7 +20,7 @@ function Login() {
     e.preventDefault();
     try {
         // const response = await axios.post('/api/login', { email, password }); // Adjust API URL
-        const response = await axios.post('http://localhost:5000/api/login', { email, password });
+        const response = await axios.post(`${API_BASE_URL}/api/login`, { email, password });
 
         const token = response.data.token;
         

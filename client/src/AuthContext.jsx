@@ -1,6 +1,6 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import axios from "axios";
-
+import API_BASE_URL from '../config';
 const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
@@ -8,7 +8,7 @@ export const AuthProvider = ({ children }) => {
 
     // Check login status on page load
     useEffect(() => {
-        axios.get("http://localhost:5000/me", { withCredentials: true })
+        axios.get(`${API_BASE_URL}/me`, { withCredentials: true })
             .then((res) => setUser(res.data.username))
             .catch(() => setUser(null));
     }, []);
@@ -16,13 +16,13 @@ export const AuthProvider = ({ children }) => {
     // Login function
     const login = async (username, password) => {
         
-        const res = await axios.post("http://localhost:5000/login", { username, password }, { withCredentials: true });
+        const res = await axios.post(`${API_BASE_URL}/login`, { username, password }, { withCredentials: true });
         if (res.data.success) setUser(username);
     };
 
     // Logout function
     const logout = async () => {
-        await axios.post("http://localhost:5000/logout", {}, { withCredentials: true });
+        await axios.post(`${API_BASE_URL}/logout`, {}, { withCredentials: true });
         setUser(null);
     };
 
