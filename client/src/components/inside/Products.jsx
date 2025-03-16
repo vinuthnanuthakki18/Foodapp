@@ -41,7 +41,7 @@ function Products() {
 
   return (
 <>
-    <div className='border-box m-2 h-full w-[98%] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2'>
+    <div className='border-box m-2 h-full w-[98%] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-2 mt-24'>
       {isLoading ? <div className="flex justify-center items-center w-[1230px] h-[200px]">
     <BounceLoader
       color="#f97316"

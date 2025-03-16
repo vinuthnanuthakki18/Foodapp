@@ -16,6 +16,7 @@ function Profile() {
   const [dateOfBirth, setDob] = useState("");
   const [gender, setGender] =useState("");
   const dispatch = useDispatch();
+  const [res,setres] = useState(false);
 
   useEffect(() => {
     console.log("hey vinnu", userProfile);
@@ -48,6 +49,8 @@ function Profile() {
   
     try {
       const response = await axios.post("http://localhost:5000/api/update", updateData);
+      console.log(response);
+      if(response.status == 200)  setres(true);
       dispatch(update(response.data.user));
       setMessage(response.data.message);
     } catch (err) {
@@ -64,7 +67,7 @@ function Profile() {
     <BounceLoader color="#36d7b7" />
   ) : (
     <div className="min-h-screen bg-slate-50 mt-24">
-      <Head className="fixed"/>
+      <Head className="fixed" isSearch={true}/>
       <div className="max-w-md mx-auto dataform flex flex-col justify-center rounded-lg shadow-lg bg-white mt-6 p-4">
         <div className="flex justify-between">
         <h1 className="font-bold text-gray-900 text-2xl">
@@ -155,7 +158,7 @@ function Profile() {
                   Other</label>
               </div>
           </div>
-          {message && <p className="text-sm text-red-500 mt-1">{message}</p>}
+          {(message && res) ? <p className="text-sm text-green-600 mt-1">{message}</p> : <p className="text-sm text-red-500 mt-1">{message}</p>}
         </form>
       </div>
     </div>
