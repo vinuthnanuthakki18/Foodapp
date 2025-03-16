@@ -29,7 +29,7 @@ router.post('/search', async (req, res) => {
       name : {$regex : query, $options : "i"}
     });
 // console.log(returnRestaurants.length, page, items, startIndex );
-    // console.log(Restaurantss);
+    console.log(Restaurantss);
   res.json({ data : Restaurantss, total : Restaurantss.length});
 }catch (error) {
   res.status(500).json({ message: "Error fetching restaurants", error });
