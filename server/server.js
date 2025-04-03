@@ -10,6 +10,7 @@ const app = express();
 const router = express.Router();
 // Middleware
 app.use(express.json());
+
 const allowedOrigins = [
   "https://bitexpress-delta.vercel.app", // Your new frontend URL
   "https://foodapp-frontend-envwwzw0u-nuthakki-vinuthnas-projects.vercel.app", // Old frontend (optional)
