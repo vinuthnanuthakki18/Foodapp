@@ -18,7 +18,7 @@ function Account({ isOpen, onClose }) {
 
   return (
     <div
-      className={`fixed top-0 right-0 h-full w-[300px] bg-gray-50 p-6 rounded-l-lg shadow-lg transform transition-transform duration-300 ease-in-out
+      className={`fixed top-0 right-0 h-full w-[300px] z-50 bg-gray-50 p-6 rounded-l-lg shadow-lg transform transition-transform duration-300 ease-in-out
         ${isVisible ? "translate-x-0" : "translate-x-full"}
       `}
     >
