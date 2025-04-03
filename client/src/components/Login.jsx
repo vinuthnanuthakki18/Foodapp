@@ -53,7 +53,7 @@ function Login() {
             <div className="signup-methods flex flex-col justify-center w-full max-w-[80%] gap-4 sm:gap-6 m-2 sm:m-4">
               <input
                 type="text"
-                placeholder="Email or Username"
+                placeholder="Email Address"
                 className="p-2 sm:p-3 rounded w-full text-sm sm:text-base"
                 onChange={(e) => setEmail(e.target.value)}
                 required
