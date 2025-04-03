@@ -64,7 +64,7 @@ function Signup() {
               <input
                 type="text"
                 name="email"
-                placeholder="Email or Phonenumber"
+                placeholder="Email Address"
                 className="p-2 sm:p-3 rounded w-full text-sm sm:text-base"
                 value={formData.email}
                 onChange={handleChange}
